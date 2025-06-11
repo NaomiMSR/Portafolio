@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "index.html": {
+      "memory": 1024
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
