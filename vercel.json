@@ -1,13 +1,6 @@
 {
-  "functions": {
-    "index.html": {
-      "memory": 1024
-    }
-  },
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ]
+  "buildCommand": null,
+  "outputDirectory": "./",
+  "installCommand": null,
+  "framework": null
 }
