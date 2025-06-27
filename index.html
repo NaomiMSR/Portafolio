@@ -125,46 +125,78 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Sección de Certificados -->
+                <h2 class="certificates-title">Certificados</h2>
+
                 <div class="certificates-section" id="certificates-section">
-                    <button class="certificates-toggle" id="certificatesToggle">
-                        <span>Certificados</span>
-                        <span class="toggle-icon">▼</span>
-                    </button>
-                                        
-                    <div class="certificates-content" id="certificatesContent">
-                        <div class="certificates-list-container">
-                            <ul class="certificates-list">
-                                <li class="cert-item" data-cert="0">🐍 Python Essentials | Cisco</li>
-                                <li class="cert-item" data-cert="1">☁️ AWS Academy Graduate | AWS Academy Cloud Foundations</li>
-                                <li class="cert-item" data-cert="2">☕ Java Fundamentals | Oracle</li>
-                                <li class="cert-item" data-cert="3">☕ Java Programming | Oracle</li>
-                                <li class="cert-item" data-cert="4">🔒 IT Security Foundations: Operating System Security | LinkedIn</li>
-                                <li class="cert-item" data-cert="5">📊 Introduction to Data Science | Cisco</li>
-                                <li class="cert-item" data-cert="6">🗃️ Database Functions | Oracle Academy</li>
-                                <li class="cert-item" data-cert="7">🏗️ Data Structure | Oracle Academy</li>
-                                <li class="cert-item" data-cert="8">⚡ Rapid Developer | Mendix</li>
-                                <li class="cert-item" data-cert="9">🌐 Networking Basics | Cisco</li>
-                                <li class="cert-item" data-cert="10">💻 Web Development Fundamentals | IBM SkillsBuild</li>
-                                <li class="cert-item" data-cert="11">☁️ AWS Academy Graduate - AWS Academy Cloud Operations</li>
+                    <div class="certificates-container">
+                        <!-- Lista de certificados (lado izquierdo) -->
+                        <div class="certificates-list">
+                            <h3 class="list-title">Lista de Certificados</h3>
+                            <ul class="certificates-menu" id="certificatesList">
+                                <li class="certificate-item active" data-index="0">
+                                    <span class="certificate-number">01</span>
+                                    <span class="certificate-list-name">🐍 Python Essentials | Cisco</span>
+                                </li>
+                                <li class="certificate-item" data-index="1">
+                                    <span class="certificate-number">02</span>
+                                    <span class="certificate-list-name">☁️ AWS Academy Graduate | AWS Academy Cloud Foundations</span>
+                                </li>
+                                <li class="certificate-item" data-index="2">
+                                    <span class="certificate-number">03</span>
+                                    <span class="certificate-list-name">☕ Java Fundamentals | Oracle</span>
+                                </li>
+                                <li class="certificate-item" data-index="3">
+                                    <span class="certificate-number">04</span>
+                                    <span class="certificate-list-name">☕ Java Programming | Oracle</span>
+                                </li>
+                                <li class="certificate-item" data-index="4">
+                                    <span class="certificate-number">05</span>
+                                    <span class="certificate-list-name">🔒 IT Security Foundations: Operating System Security | LinkedIn</span>
+                                </li>
+                                <li class="certificate-item" data-index="5">
+                                    <span class="certificate-number">06</span>
+                                    <span class="certificate-list-name">📊 Introduction to Data Science | Cisco</span>
+                                </li>
+                                <li class="certificate-item" data-index="6">
+                                    <span class="certificate-number">07</span>
+                                    <span class="certificate-list-name">🗃️ Database Foundations | Oracle Academy</span>
+                                </li>
+                                <li class="certificate-item" data-index="7">
+                                    <span class="certificate-number">08</span>
+                                    <span class="certificate-list-name">🏗️ Data Structure | Oracle Academy</span>
+                                </li>
+                                <li class="certificate-item" data-index="8">
+                                    <span class="certificate-number">09</span>
+                                    <span class="certificate-list-name">⚡ Rapid Developer | Mendix</span>
+                                </li>
+                                <li class="certificate-item" data-index="9">
+                                    <span class="certificate-number">10</span>
+                                    <span class="certificate-list-name">🌐 Networking Basics | Cisco</span>
+                                </li>
+                                <li class="certificate-item" data-index="10">
+                                    <span class="certificate-number">11</span>
+                                    <span class="certificate-list-name">💻 Web Development Fundamentals | IBM SkillsBuild</span>
+                                </li>
+                                <li class="certificate-item" data-index="11">
+                                    <span class="certificate-number">12</span>
+                                    <span class="certificate-list-name">☁️ AWS Academy Graduate - AWS Academy Cloud Operations</span>
+                                </li>
                             </ul>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Pop-up Modal -->
-                <div class="popup-overlay" id="popupOverlay">
-                    <div class="popup-container">
-                        <div class="popup-header">
-                            <h3 class="popup-title" id="popupTitle">Certificado</h3>
-                            <button class="popup-close" id="popupClose">&times;</button>
-                        </div>
-                        <div class="popup-content">
-                            <button class="navigation-arrows prev-arrow" id="prevArrow">&#8249;</button>
-                            <img class="certificate-image" id="certificateImage" src="" alt="Certificado">
-                            <button class="navigation-arrows next-arrow" id="nextArrow">&#8250;</button>
-                            <div class="certificate-counter" id="certificateCounter">1 de 12</div>
+                        <!-- Galería de certificados (lado derecho) -->
+                        <div class="certificates-viewer">
+                            <div class="certificate-container">
+                                <button class="navigation-arrows prev-arrow" id="prevArrow">&#8249;</button>
+                                <div class="certificate-display">
+                                    <h3 class="certificate-name" id="certificateTitle">🐍 Python Essentials | Cisco</h3>
+                                    <img class="certificate-image" id="certificateImage" src="./certificadosIMG/Python.jpg" alt="Certificado">
+                                    <div class="certificate-counter" id="certificateCounter">1 de 12</div>
+                                </div>
+                                <button class="navigation-arrows next-arrow" id="nextArrow">&#8250;</button>
+                            </div>
                         </div>
                     </div>
                 </div>

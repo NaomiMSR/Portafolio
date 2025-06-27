@@ -1,7 +1,10 @@
 function showTab(tabName) {
     if (tabName === 'certificados') {
-        // Si es certificados, abrir la sección desplegable y hacer scroll
-        openCertificatesSection();
+        // Hacer scroll a la sección de certificados
+        document.getElementById('certificates-section').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
         
         // Activar el botón de certificados en la navegación
         const buttons = document.querySelectorAll('.tab-btn');
@@ -314,99 +317,134 @@ const certificates = [
     }
 ];
 
-let currentCertIndex = 0;
+let currentIndex = 0;
+const totalCertificates = certificates.length;
 
-// Función para inicializar la funcionalidad del pop-up de certificados
-function initializeCertificatesPopup() {
-    // Elementos del DOM
-    const certItems = document.querySelectorAll('.cert-item');
-    const popupOverlay = document.getElementById('popupOverlay');
-    const popupTitle = document.getElementById('popupTitle');
-    const certificateImage = document.getElementById('certificateImage');
-    const certificateCounter = document.getElementById('certificateCounter');
-    const popupClose = document.getElementById('popupClose');
-    const prevArrow = document.getElementById('prevArrow');
-    const nextArrow = document.getElementById('nextArrow');
+// Elementos del DOM
+const certificateTitle = document.getElementById('certificateTitle');
+const certificateImage = document.getElementById('certificateImage');
+const certificateCounter = document.getElementById('certificateCounter');
+const prevArrow = document.getElementById('prevArrow');
+const nextArrow = document.getElementById('nextArrow');
+let certificateItems = [];
 
-    // Verificar que los elementos existan
-    if (!popupOverlay || !popupTitle || !certificateImage || !certificateCounter || !popupClose || !prevArrow || !nextArrow) {
-        console.log('Algunos elementos del pop-up no se encontraron');
-        return;
-    }
+// Debug: Verificar que los elementos existen
+console.log('Elementos encontrados:', {
+    certificateImage: !!certificateImage,
+    certificateTitle: !!certificateTitle,
+    certificateCounter: !!certificateCounter,
+    prevArrow: !!prevArrow,
+    nextArrow: !!nextArrow
+});
 
-    // Event listeners para certificados
-    certItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            showCertificate(index);
-        });
-    });
-
-    // Event listeners para pop-up
-    popupClose.addEventListener('click', closePopup);
-    nextArrow.addEventListener('click', () => navigateCertificate('next'));
-    prevArrow.addEventListener('click', () => navigateCertificate('prev'));
-
-    // Cerrar pop-up al hacer click fuera del contenido
-    popupOverlay.addEventListener('click', (e) => {
-        if (e.target === popupOverlay) {
-            closePopup();
-        }
-    });
-
-    // Navegación con teclado
-    document.addEventListener('keydown', (e) => {
-        if (popupOverlay.style.display === 'flex') {
-            switch(e.key) {
-                case 'Escape':
-                    closePopup();
-                    break;
-                case 'ArrowLeft':
-                    navigateCertificate('prev');
-                    break;
-                case 'ArrowRight':
-                    navigateCertificate('next');
-                    break;
-            }
-        }
-    });
-}
-
-// Función para mostrar certificado en pop-up
-function showCertificate(index) {
-    currentCertIndex = index;
+// Función para actualizar la vista del certificado
+function updateCertificate(index = currentIndex) {
+    currentIndex = index;
     const cert = certificates[index];
     
-    const popupOverlay = document.getElementById('popupOverlay');
-    const popupTitle = document.getElementById('popupTitle');
-    const certificateImage = document.getElementById('certificateImage');
-    const certificateCounter = document.getElementById('certificateCounter');
+    // Actualizar la galería
+    if (certificateTitle) {
+        certificateTitle.textContent = cert.name;
+        console.log('Título actualizado:', cert.name);
+    }
     
-    if (popupOverlay && popupTitle && certificateImage && certificateCounter) {
-        popupTitle.textContent = cert.name;
+    if (certificateImage) {
         certificateImage.src = cert.image;
         certificateImage.alt = cert.name;
-        certificateCounter.textContent = `${index + 1} de ${certificates.length}`;
+    }
+    
+    if (certificateCounter) {
+        certificateCounter.textContent = `${index + 1} de ${totalCertificates}`;
+    }
+    
+    // Actualizar la lista (remover clase active de todos y agregar al actual)
+    certificateItems.forEach(item => item.classList.remove('active'));
+    if (certificateItems[index]) {
+        certificateItems[index].classList.add('active');
         
-        popupOverlay.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+        // Hacer scroll al elemento activo si es necesario
+        certificateItems[index].scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest'
+        });
+    }
+    
+    // Animación de fade
+    if (certificateImage) {
+        certificateImage.style.opacity = '0';
+    }
+    if (certificateTitle) {
+        certificateTitle.style.opacity = '0';
+    }
+    
+    setTimeout(() => {
+        if (certificateImage) {
+            certificateImage.style.opacity = '1';
+        }
+        if (certificateTitle) {
+            certificateTitle.style.opacity = '1';
+        }
+    }, 150);
+}
+
+// Función para ir al certificado anterior
+function showPrevious() {
+    const prevIndex = (currentIndex - 1 + totalCertificates) % totalCertificates;
+    updateCertificate(prevIndex);
+}
+
+// Función para ir al certificado siguiente
+function showNext() {
+    const nextIndex = (currentIndex + 1) % totalCertificates;
+    updateCertificate(nextIndex);
+}
+
+// Función para ir a un certificado específico
+function goToCertificate(index) {
+    if (index >= 0 && index < totalCertificates) {
+        updateCertificate(index);
     }
 }
 
-// Función para cerrar pop-up
-function closePopup() {
-    const popupOverlay = document.getElementById('popupOverlay');
-    if (popupOverlay) {
-        popupOverlay.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-}
-
-// Función para navegar certificados
-function navigateCertificate(direction) {
-    if (direction === 'next') {
-        currentCertIndex = (currentCertIndex + 1) % certificates.length;
+// Event listeners y inicialización
+document.addEventListener('DOMContentLoaded', function() {
+    // Obtener elementos de la lista después de que el DOM esté cargado
+    certificateItems = document.querySelectorAll('.certificate-item');
+    
+    // Verificar que los elementos existen
+    if (certificateImage && certificateTitle && certificateCounter && prevArrow && nextArrow) {
+        // Inicializar con el primer certificado
+        updateCertificate(0);
+        
+        // Event listeners para las flechas de navegación
+        prevArrow.addEventListener('click', showPrevious);
+        nextArrow.addEventListener('click', showNext);
+        
+        // Event listeners para los elementos de la lista
+        certificateItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                updateCertificate(index);
+            });
+        });
+        
+        // Navegación con teclado
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                showPrevious();
+            } else if (e.key === 'ArrowRight') {
+                showNext();
+            }
+        });
+        
+        // Auto-deslizamiento opcional (descomenta si lo quieres)
+        /*
+        setInterval(function() {
+            showNext();
+        }, 5000); // Cambia cada 5 segundos
+        */
+        
+        console.log('Certificados inicializados correctamente');
     } else {
-        currentCertIndex = (currentCertIndex - 1 + certificates.length) % certificates.length;
+        console.error('No se pudieron encontrar todos los elementos necesarios');
     }
-    showCertificate(currentCertIndex);
-}
+});
