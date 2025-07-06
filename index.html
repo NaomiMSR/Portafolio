@@ -8,63 +8,65 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="header-content">
-                <div class="avatar">
-                    <img src="images/fotoportafolio.jpeg" alt="Avatar">
-                </div>
-                <div class="header-info">
-                    <h1>Naomi Mayela Santos Rodriguez</h1>
-                    <div class="contact-info">
-                        <!-- Teléfono - Copiable -->
-                        <div class="contact-item clickable" onclick="copyToClipboard('8180272455', 'Teléfono copiado al portapapeles')">
-                            <i class="fas fa-phone"></i>
-                            <span>81 8027 2455</span>
-                        </div>
-                        
-                        <!-- Email - Copiable -->
-                        <div class="contact-item clickable" onclick="copyToClipboard('santosnaomi031@gmail.com', 'Email copiado al portapapeles')">
-                            <i class="fas fa-envelope"></i>
-                            <span>santosnaomi031@gmail.com</span>
-                        </div>
-                        
-                        <!-- LinkedIn - Enlace directo -->
-                        <a href="https://www.linkedin.com/in/naomi-santos-23b377335" target="_blank" class="social-link">
-                            <div class="contact-item">
-                                <i class="fab fa-linkedin"></i>
-                                <span>LinkedIn</span>
-                            </div>
-                        </a>
-                        
-                        <!-- GitHub - Enlace directo -->
-                        <a href="https://github.com/NaomiMSR" target="_blank" class="social-link">
-                            <div class="contact-item">
-                                <i class="fab fa-github"></i>
-                                <span>GitHub</span>
-                            </div>
-                        </a>
-                    </div>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <!-- Sección de perfil pequeña en la esquina -->
+            <div class="profile-section">
+                <img src="images/fotoportafolio.jpeg" alt="Naomi Santos" class="profile-image">
+                <div class="profile-info">
+                    <div class="profile-name">Naomi Mayela Santos Rodriguez     |     Ingeniería en Desarrollo de Software</div>
                 </div>
             </div>
+
+            <!-- Título principal -->
+            <h1 class="main-title">Naomi Santos</h1>
+
+            <!-- Botones de contacto -->
+            <div class="contact-buttons">
+                <!-- Teléfono - Copiable -->
+                <div class="contact-item clickable" onclick="copyToClipboard('8180272455', 'Teléfono copiado al portapapeles')">
+                    <i class="fas fa-phone"></i>
+                    <span>81 8027 2455</span>
+                </div>
+
+                <!-- Email - Copiable -->
+                <div class="contact-item clickable" onclick="copyToClipboard('santosnaomi031@gmail.com', 'Email copiado al portapapeles')">
+                    <i class="fas fa-envelope"></i>
+                    <span>santosnaomi0311@gmail.com</span>
+                </div>
+                        
+                <!-- LinkedIn - Enlace directo -->
+                <a href="https://www.linkedin.com/in/naomi-santos-23b377335" target="_blank" class="social-link">
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>Naomi Santos</span>
+                    </div>
+                </a>
+                        
+                <!-- GitHub - Enlace directo -->
+                <a href="https://github.com/NaomiMSR" target="_blank" class="social-link">
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <span>NaomiMSR</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Botones de navegación -->
+            <div class="nav-buttons">
+                <a href="#about" class="nav-btn">Sobre mí</a>
+                <a href="#projects" class="nav-btn">Proyectos</a>
+            </div>
         </div>
+    </div>
+
+    <div class="container">
 
         <!-- Notificación de copiado -->
         <div id="copyNotification" class="copy-notification">
             <i class="fas fa-check-circle"></i>
             <span id="copyMessage">Copiado al portapapeles</span>
-        </div>
-
-        <div class="carrera">
-            <h2>Ingeniería en Desarrollo de Software</h2>
-            <p>Universidad Tecmilenio | 5to Semestre</p>
-        </div>
-
-        <!-- Navigation -->
-        <div class="nav-tabs">
-            <button class="tab-btn" onclick="showTab('certificados')">Certificados</button>
-            <button class="tab-btn" onclick="showTab('proyectos')">Proyectos</button>
         </div>
 
         <!-- Content -->
@@ -250,6 +252,7 @@
             </div>
         </div>
     </div>
+    
 
     <!-- Footer -->
     <div class="footer">
