@@ -15,7 +15,7 @@
             <div class="profile-section">
                 <img src="images/fotoportafolio.jpeg" alt="Naomi Santos" class="profile-image">
                 <div class="profile-info">
-                    <div class="profile-name">Naomi Mayela Santos Rodriguez     |     Ingeniería en Desarrollo de Software</div>
+                    <div class="profile-name">Naomi Mayela Santos Rodriguez  |  Ingeniería en Desarrollo de Software</div>
                 </div>
             </div>
 
@@ -55,8 +55,8 @@
 
             <!-- Botones de navegación -->
             <div class="nav-buttons">
-                <a href="#about" class="nav-btn">Sobre mí</a>
-                <a href="#projects" class="nav-btn">Proyectos</a>
+                <button class="nav-btn active" onclick="showSection('about')">Sobre mí</button>
+                <button class="nav-btn" onclick="showSection('projects')">Proyectos</button>
             </div>
         </div>
     </div>
@@ -71,8 +71,8 @@
 
         <!-- Content -->
         <div class="content">
-            <!-- Sobre mí -->
-            <div id="sobre-mi" class="tab-content active">
+            <!-- SECCIÓN SOBRE MÍ -->
+            <div id="about-section" class="content-section">
                 <div class="about-text">
                     <p>Estoy en la búsqueda de oportunidades que me permitan mejorar mis habilidades en el ámbito de la ingeniería y contribuir a proyectos innovadores. Mi objetivo es seguir creciendo como profesional y tener un impacto positivo en el campo de la tecnología.</p>
                 <!-- Botón de descarga de CV -->
@@ -83,46 +83,16 @@
                         </a>
                     </div>
                 </div>
-
-                <div class="tech-stack">
-                    <h2>Tech Stack</h2>
-                    <div class="tech-grid">
-                        <div class="tech-category">
-                            <h3>Lenguajes de programación:</h3>
-                            <div class="tech-tags">
-                                <span class="tech-tag python">🐍 Python</span>
-                                <span class="tech-tag java">☕ Java</span>
-                                <span class="tech-tag javascript">📜 JavaScript</span>
-                            </div>
-                        </div>
-
-                        <div class="tech-category">
-                            <h3>Front-End:</h3>
-                            <div class="tech-tags">
-                                <span class="tech-tag html">🔥 HTML</span>
-                                <span class="tech-tag css">🎨 CSS</span>
-                                <span class="tech-tag react">⚛️ React</span>
-                            </div>
-                        </div>
-
-                        <div class="tech-category">
-                            <h3>Back-End:</h3>
-                            <div class="tech-tags">
-                                <span class="tech-tag node">💚 Node.js</span>
-                            </div>
-                        </div>
-
-                        <div class="tech-category">
-                            <h3>Bases de datos:</h3>
-                            <div class="tech-tags">
-                                <span class="tech-tag sql">🗃️ SQL</span>
-                            </div>
-                        </div>
-
-                        <div class="tech-category">
-                            <h3>Cloud:</h3>
-                            <div class="tech-tags">
-                                <span class="tech-tag aws">☁️ AWS</span>
+                
+                <!-- Sección de Estudios -->
+                <div class="studies-section">
+                    <h2 class="studies-title">ESTUDIOS</h2>
+                    <div class="studies-content">
+                        <div class="degree-info">
+                            <h3 class="degree-title">Ingeniería en Desarrollo de Software</h3>
+                            <div class="university-info">
+                                <span class="university-name">Universidad Tecmilenio</span>
+                                <span class="study-period">2022 - actualmente</span>
                             </div>
                         </div>
                     </div>
@@ -203,34 +173,46 @@
                     </div>
                 </div>
 
-                <!-- Sección de Proyectos -->
-                <div class="projects-section">
-                    <h2 class="section-title">Proyectos</h2>
-                    <div class="project-container">
-                        <div class="project-grid">
-                            <!-- Descripción del Proyecto (lado izquierdo) -->
-                            <div class="project-description-section">
-                                <h3>Descripción del Proyecto</h3>
-                                <p class="project-description">
-                                    Diseñé y desarrollé una plataforma de comercio electrónico para la cual utilicé tecnologías como HTML, CSS, JavaScript y MongoDB, implementando funciones clave como carrito de compras y sistema de gestión de inventario.
-                                </p>
+                <!-- Tech stack -->
+                <div class="tech-stack">
+                    <h2>Tech Stack</h2>
+                    <div class="tech-grid">
+                        <div class="tech-category">
+                            <h3>Lenguajes de programación:</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag python">🐍 Python</span>
+                                <span class="tech-tag java">☕ Java</span>
+                                <span class="tech-tag javascript">📜 JavaScript</span>
                             </div>
-                            
-                            <!-- Información del Repositorio (lado derecho) -->
-                            <div class="project-repo-section">
-                                <h3>Información del Repositorio</h3>
-                                <div class="project-info">
-                                    <i class="fab fa-github"></i> Repositorio:
-                                </div>
-                                <a href="https://github.com/NaomiMSR/ProyectoFinalofC.git" target="_blank" class="project-link">
-                                    https://github.com/NaomiMSR/ProyectoFinalofC.git
-                                </a>
-                                <div class="project-info">
-                                    <i class="fas fa-external-link-alt"></i> Ver en vivo:
-                                </div>
-                                <a href="https://proyecto-finalofC.vercel.app" target="_blank" class="project-link">
-                                    proyecto-finalofC.vercel.app
-                                </a>
+                        </div>
+
+                        <div class="tech-category">
+                            <h3>Front-End:</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag html">🔥 HTML</span>
+                                <span class="tech-tag css">🎨 CSS</span>
+                                <span class="tech-tag react">⚛️ React</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-category">
+                            <h3>Back-End:</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag node">💚 Node.js</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-category">
+                            <h3>Bases de datos:</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag sql">🗃️ SQL</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-category">
+                            <h3>Cloud:</h3>
+                            <div class="tech-tags">
+                                <span class="tech-tag aws">☁️ AWS</span>
                             </div>
                         </div>
                     </div>
@@ -250,10 +232,52 @@
                     </div>
                 </div>
             </div>
+            <!-- FIN SECCIÓN SOBRE MÍ -->
+
+            <!-- SECCIÓN DE PROYECTOS -->
+            <div id="projects-section" class="content-section">
+                <h2 class="section-title">Proyectos</h2>
+                <div class="project-container">
+                    <div class="project-grid">
+                        <!-- Página en vivo (lado izquierdo) -->
+                        <div class="project-live-section">
+                            <a href="https://modatrend-production.up.railway.app/" target="_blank" class="live-preview-card">
+                                <div class="preview-icon">
+                                    <img src="images/preview.png" alt="Vista previa del proyecto" class="preview-image">
+                                </div>
+                                <div class="preview-text">Ver Proyecto</div>
+                                <div class="preview-url">modatrend-production</div>
+                            </a>
+                        </div>
+                        
+                        <!-- Descripción y Repositorio (lado derecho) -->
+                        <div class="project-content-section">
+                            <!-- Descripción del Proyecto -->
+                            <div class="project-description-section">
+                                <h3>Descripción</h3>
+                                <p class="project-description">
+                                    Como parte de mi certificado "Desarrollo full stack", diseñé y desarrollé una plataforma de comercio electrónico para la cual utilicé tecnologías como HTML, CSS, JavaScript y MongoDB, implementando funciones clave como carrito de compras y sistema de gestión de inventario.
+                                </p>
+                            </div>
+                            
+                            <!-- Información del Repositorio -->
+                            <div class="project-repo-section">
+                                <div class="project-info">
+                                    <i class="fab fa-github"></i> Código fuente:
+                                </div>
+                                <a href="https://github.com/NaomiMSR/Proyecto1" target="_blank" class="project-link">
+                                    https://github.com/NaomiMSR/Proyecto1
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN SECCIÓN DE PROYECTOS -->
+
         </div>
     </div>
     
-
     <!-- Footer -->
     <div class="footer">
         <p>Hecho por Naomi Santos. Todos los derechos reservados.</p>

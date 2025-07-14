@@ -1,150 +1,49 @@
-function showTab(tabName) {
-    if (tabName === 'certificados') {
-        // Hacer scroll a la sección de certificados
-        document.getElementById('certificates-section').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-        
-        // Activar el botón de certificados en la navegación
-        const buttons = document.querySelectorAll('.tab-btn');
-        buttons.forEach(button => {
-            button.classList.remove('active');
-        });
-        event.target.classList.add('active');
-        return;
-    }
+function showSection(section) {
+    // Ocultar todas las secciones
+    document.getElementById('about-section').classList.add('hidden');
+    document.getElementById('projects-section').classList.add('hidden');
     
-    if (tabName === 'proyectos') {
-        // Si es proyectos, hacer scroll a la sección de proyectos
-        document.querySelector('.projects-section').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-        
-        // Activar el botón de proyectos en la navegación
-        const buttons = document.querySelectorAll('.tab-btn');
-        buttons.forEach(button => {
-            button.classList.remove('active');
-        });
-        event.target.classList.add('active');
-        return;
-    }
-    
-    // Para otras pestañas, comportamiento normal
-    // Ocultar todos los contenidos de tabs
-    const contents = document.querySelectorAll('.tab-content');
-    contents.forEach(content => {
-        content.classList.remove('active');
-    });
-
     // Remover clase active de todos los botones
-    const buttons = document.querySelectorAll('.tab-btn');
-    buttons.forEach(button => {
-        button.classList.remove('active');
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
     });
-
-    // Mostrar el contenido seleccionado
-    document.getElementById(tabName).classList.add('active');
     
-    // Activar el botón correspondiente
-    event.target.classList.add('active');
-}
-
-// Función para abrir la sección de certificados
-function openCertificatesSection() {
-    const certificatesToggle = document.getElementById('certificatesToggle');
-    const certificatesContent = document.getElementById('certificatesContent');
-    
-    if (certificatesToggle && certificatesContent) {
-        // Agregar clases para mostrar el contenido
-        certificatesToggle.classList.add('active');
-        certificatesContent.classList.add('expanded');
-        
-        // Hacer scroll hasta la sección
-        document.getElementById('certificates-section').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+    // Mostrar la sección seleccionada
+    if (section === 'about') {
+        document.getElementById('about-section').classList.remove('hidden');
+        document.querySelector('.nav-btn[onclick="showSection(\'about\')"]').classList.add('active');
+    } else if (section === 'projects') {
+        document.getElementById('projects-section').classList.remove('hidden');
+        document.querySelector('.nav-btn[onclick="showSection(\'projects\')"]').classList.add('active');
     }
 }
 
-// Función para la funcionalidad del botón desplegable de certificados
-function initializeCertificatesToggle() {
-    const certificatesToggle = document.getElementById('certificatesToggle');
-    const certificatesContent = document.getElementById('certificatesContent');
-
-    if (certificatesToggle && certificatesContent) {
-        certificatesToggle.addEventListener('click', function() {
-            // Toggle de la clase active para el botón
-            this.classList.toggle('active');
-            
-            // Toggle de la clase expanded para el contenido
-            certificatesContent.classList.toggle('expanded');
-        });
-    }
+// Función para copiar al portapapeles
+function copyToClipboard(text, message) {
+    navigator.clipboard.writeText(text).then(function() {
+        showNotification(message);
+    }).catch(function(err) {
+        console.error('Error al copiar: ', err);
+        showNotification('Error al copiar al portapapeles');
+    });
 }
 
-// Función para agregar animaciones cuando se cargan los elementos
+// Función para mostrar notificaciones
+function showNotification(message) {
+    const notification = document.getElementById('notification');
+    notification.textContent = message;
+    notification.classList.add('show');
+    
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 3000);
+}
+
+// Inicializar mostrando la sección "Sobre mí"
 document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar el toggle de certificados
-    initializeCertificatesToggle();
-    
-    // Animación de entrada para las tarjetas de certificados (si existen en otras secciones)
-    const certItems = document.querySelectorAll('.cert-item');
-    certItems.forEach((item, index) => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(20px)';
-        setTimeout(() => {
-            item.style.transition = 'all 0.5s ease';
-            item.style.opacity = '1';
-            item.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
-
-    // Animación de entrada para las categorías de tech stack
-    const techCategories = document.querySelectorAll('.tech-category');
-    techCategories.forEach((category, index) => {
-        category.style.opacity = '0';
-        category.style.transform = 'scale(0.9)';
-        setTimeout(() => {
-            category.style.transition = 'all 0.6s ease';
-            category.style.opacity = '1';
-            category.style.transform = 'scale(1)';
-        }, index * 150);
-    });
-    
-    // Animación de entrada para la sección de certificados desplegable
-    const certificatesSection = document.querySelector('.certificates-section');
-    if (certificatesSection) {
-        certificatesSection.style.opacity = '0';
-        certificatesSection.style.transform = 'translateY(30px)';
-        setTimeout(() => {
-            certificatesSection.style.transition = 'all 0.8s ease';
-            certificatesSection.style.opacity = '1';
-            certificatesSection.style.transform = 'translateY(0)';
-        }, 500);
-    }
-
-    // INICIALIZAR FUNCIONALIDAD DE POP-UP DE CERTIFICADOS
-    initializeCertificatesPopup();
+    showSection('about');
 });
-
-// Función para cambiar el tema de color del gradiente (opcional)
-function changeGradientTheme() {
-    const body = document.body;
-    const themes = [
-        'linear-gradient(135deg, #6B73FF 0%, #9C27B0 25%, #FF6B6B 50%, #4ECDC4 75%, #45B7D1 100%)',
-        'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-        'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-        'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'
-    ];
     
-    const currentIndex = Math.floor(Math.random() * themes.length);
-    body.style.background = themes[currentIndex];
-    body.style.backgroundSize = '400% 400%';
-}
 
 // Efecto de paralaje suave al hacer scroll
 window.addEventListener('scroll', function() {
@@ -435,13 +334,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 showNext();
             }
         });
-        
-        // Auto-deslizamiento opcional (descomenta si lo quieres)
-        /*
-        setInterval(function() {
-            showNext();
-        }, 5000); // Cambia cada 5 segundos
-        */
         
         console.log('Certificados inicializados correctamente');
     } else {
