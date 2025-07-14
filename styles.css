@@ -39,25 +39,96 @@ body {
     background: #466794;
     padding: 40px 20px;
     color: white;
-    font-family: 'Arial', 'Helvetica', sans-serif; /* Fuente diferente para el header */
+    font-family: 'Arial', 'Helvetica', sans-serif;
     border-radius: 0;
-    margin: 0; /* Eliminar márgenes */
-    margin-top: 0 !important; /* Forzar margen superior a 0 */
-    margin-bottom: 2rem; /* Mantener solo margen inferior */
-    width: 100vw; /* Usar viewport width para ocupar toda la pantalla */
-    box-sizing: border-box; /* Incluir padding en el ancho total */
-    position: relative; /* Necesario para el left */
-    left: 50%; /* Mover hacia la derecha */
-    right: 50%; /* Mover hacia la izquierda */
-    margin-left: -50vw; /* Compensar el movimiento */
-    margin-right: -50vw; /* Compensar el movimiento */
+    margin: 0;
+    margin-top: 0 !important;
+    margin-bottom: 2rem;
+    width: 100vw;
+    box-sizing: border-box;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+}
+
+/* Efecto de luces animadas */
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        transparent 0%,
+        rgba(147, 197, 253, 0.4) 20%,
+        rgba(96, 165, 250, 0.5) 30%,
+        rgba(59, 130, 246, 0.6) 40%,
+        rgba(37, 99, 235, 0.5) 50%,
+        rgba(29, 78, 216, 0.4) 60%,
+        rgba(30, 64, 175, 0.3) 70%,
+        rgba(30, 58, 138, 0.2) 80%,
+        transparent 100%
+    );
+    animation: lightSweep 2s ease-out forwards;
+    z-index: 1;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse at 20% 80%,
+        rgba(147, 197, 253, 0.6) 0%,
+        rgba(96, 165, 250, 0.4) 25%,
+        rgba(59, 130, 246, 0.2) 50%,
+        transparent 70%
+    ),
+    radial-gradient(
+        ellipse at 80% 20%,
+        rgba(37, 99, 235, 0.5) 0%,
+        rgba(29, 78, 216, 0.3) 30%,
+        rgba(30, 64, 175, 0.2) 50%,
+        transparent 70%
+    ),
+    radial-gradient(
+        ellipse at 60% 60%,
+        rgba(59, 130, 246, 0.4) 0%,
+        rgba(37, 99, 235, 0.3) 35%,
+        rgba(30, 58, 138, 0.2) 50%,
+        transparent 70%
+    ),
+    radial-gradient(
+        ellipse at 40% 30%,
+        rgba(147, 197, 253, 0.5) 0%,
+        rgba(96, 165, 250, 0.3) 40%,
+        transparent 60%
+    );
+    animation: floatingLights 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* Asegurar que el contenido esté por encima de las luces */
+.header-content {
+    position: relative;
+    z-index: 2;
 }
 
 .header-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding-top: 0px; /* Reducir espacio superior */
-    padding-left: 0px; /* Reducir espacio izquierdo */
+    padding-top: 0px;
+    padding-left: 0px;
+    position: relative;
+    z-index: 2;
 }
 
 .profile-section {
@@ -65,8 +136,8 @@ body {
     align-items: center;
     gap: 20px;
     margin-bottom: 30px;
-    margin-top: -10px; /* Reducir margen superior */
-    margin-left: -40px; /* Reducir margen izquierdo */
+    margin-top: -10px;
+    margin-left: -40px;
 }
 
 .profile-image {
@@ -256,74 +327,222 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .header {
+        padding: 20px 15px;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+        left: 0;
+        right: 0;
+        border-radius: 0;
+        position: relative;
+    }
+    
+    .header-content {
+        padding-left: 0;
+        padding-right: 0;
+        max-width: 100%;
+    }
+    
+    .profile-section {
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 20px;
+        gap: 12px;
+        flex-direction: row;
+        text-align: left;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .profile-image {
+        width: 50px;
+        height: 50px;
+        flex-shrink: 0;
+    }
+    
+    .profile-info {
+        text-align: left;
+    }
+    
+    .profile-name {
+        font-size: 13px;
+        margin-bottom: 2px;
+    }
+    
+    .profile-title {
+        font-size: 14px;
+    }
+    
     .main-title {
         font-size: 2.5rem;
         letter-spacing: 4px;
+        margin: 20px 0;
     }
     
     .contact-buttons {
-        flex-direction: column;
-        align-items: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+        margin-bottom: 40px;
+        max-width: 100%;
+        padding: 0 20px;
+    }
+    
+    .contact-item {
+        font-size: 10px;
+        padding: 6px 8px;
+        justify-content: center;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+        border-radius: 15px;
+    }
+    
+    .contact-item span {
+        font-size: 9px;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     
     .nav-buttons {
         flex-direction: column;
+        gap: 15px;
         align-items: center;
     }
     
     .nav-btn {
-        width: 250px;
-    }
-
-    .header {
-        margin-left: 10px;
-        width: calc(100vw - 10px);
-        border-radius: 3rem 0 0 3rem;
-    }
-            
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-    }
-            
-    .contact-info {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* 2 columnas */
-        gap: 1rem;
-        justify-content: center;
-        max-width: 100%;
-    }
-            
-    .contact-item {
-        font-size: 0.85rem;
-        padding: 0.5rem 0.8rem;
-        justify-content: center;
-        text-align: center;
-        min-width: 0;
-    }
-    
-    .contact-item span {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-size: 0.8rem;
-    }
-    
-    /* Ajustar el texto del teléfono para móvil */
-    .contact-item:first-child span {
-        font-size: 0.75rem;
+        padding: 12px 40px;
+        width: 80%;
+        max-width: 300px;
+        font-size: 14px;
     }
 }
 
 @media (max-width: 480px) {
+    .header {
+        padding: 15px 10px;
+    }
+    
     .main-title {
         font-size: 2rem;
         letter-spacing: 2px;
     }
     
     .profile-section {
-        flex-direction: column;
-        text-align: center;
+        margin-bottom: 15px;
+        gap: 10px;
+    }
+    
+    .profile-image {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .profile-name {
+        font-size: 12px;
+        margin-bottom: 1px;
+    }
+    
+    .profile-title {
+        font-size: 13px;
+    }
+    
+    .contact-buttons {
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        padding: 0 15px;
+    }
+    
+    .contact-item {
+        padding: 5px 6px;
+        font-size: 9px;
+        border-radius: 12px;
+    }
+    
+    .contact-item span {
+        font-size: 8px;
+    }
+    
+    .nav-btn {
+        width: 90%;
+        padding: 10px 30px;
+        font-size: 13px;
+    }
+}
+
+/* Media query adicional para pantallas muy pequeñas */
+@media (max-width: 320px) {
+    .main-title {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+    
+    .profile-image {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .profile-name {
+        font-size: 11px;
+    }
+    
+    .profile-title {
+        font-size: 12px;
+    }
+    
+    .contact-buttons {
+        padding: 0 10px;
+    }
+    
+    .contact-item {
+        padding: 4px 5px;
+        font-size: 8px;
+        border-radius: 10px;
+    }
+    
+    .contact-item span {
+        font-size: 7px;
+    }
+    
+    .nav-btn {
+        padding: 8px 20px;
+        font-size: 12px;
+    }
+}
+
+@keyframes lightSweep {
+    0% {
+        transform: translate(-100%, 100%) rotate(45deg);
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0%, 0%) rotate(45deg);
+        opacity: 0.8;
+    }
+}
+
+@keyframes floatingLights {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.6;
+    }
+    25% {
+        transform: translateY(-10px) translateX(5px);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-5px) translateX(-8px);
+        opacity: 0.7;
+    }
+    75% {
+        transform: translateY(-15px) translateX(3px);
+        opacity: 0.9;
     }
 }
 
