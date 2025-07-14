@@ -1652,7 +1652,6 @@ body {
     color: white;
     text-align: center;
     padding: 2rem;
-    padding-bottom: 3rem;
     margin-top: 2rem;
     margin-bottom: 0;
     position: relative;
@@ -1730,10 +1729,10 @@ body {
     
     /* Footer responsive mejorado */
     .footer {
-        padding: 1.5rem 1rem; /* Padding más pequeño en móviles */
-        padding-bottom: 2.5rem; /* Más espacio en la parte inferior */
+        padding: 1.5rem 1rem;
+        padding-bottom: 2.5rem; /* Más espacio en la parte inferior solo en móviles */
         margin-top: 1.5rem;
-        overflow-x: hidden; /* Evita scroll horizontal */
+        overflow-x: hidden;
     }
     
     .footer p {
@@ -1807,7 +1806,7 @@ body {
     
     .footer {
         padding: 1rem 0.5rem;
-        padding-bottom: 2rem; /* Más espacio en la parte inferior */
+        padding-bottom: 2rem; /* Más espacio en la parte inferior solo en móviles pequeños */
     }
     
     .footer p {
@@ -1824,3 +1823,6 @@ html, body {
     overflow-x: hidden;
     max-width: 100%;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
