@@ -167,51 +167,51 @@ function showDownloadNotification() {
 // Datos de los certificados
 const certificates = [
     {
-        name: "🐍 Python Essentials | Cisco",
+        name: "Python Essentials | Cisco",
         image: "./certificadosIMG/Python.jpg"
     },
     {
-        name: "☁️ AWS Academy Graduate | AWS Academy Cloud Foundations",
+        name: "AWS Academy Graduate | AWS Academy Cloud Foundations",
         image: "./certificadosIMG/CloudFoundations.jpg"
     },
     {
-        name: "☕ Java Fundamentals | Oracle",
+        name: "Java Fundamentals | Oracle",
         image: "./certificadosIMG/JavaFundamentals.jpg"
     },
     {
-        name: "☕ Java Programming | Oracle",
+        name: "Java Programming | Oracle",
         image: "./certificadosIMG/JavaProgramming.jpg"
     },
     {
-        name: "🔒 IT Security Foundations: Operating System Security | LinkedIn",
+        name: "IT Security Foundations: Operating System Security | LinkedIn",
         image: "./certificadosIMG/IT.jpg"
     },
     {
-        name: "📊 Introduction to Data Science | Cisco",
+        name: "Introduction to Data Science | Cisco",
         image: "./certificadosIMG/DataS.jpg"
     },
     {
-        name: "🗃️ Database Foundations | Oracle Academy",
+        name: "Database Foundations | Oracle Academy",
         image: "./certificadosIMG/DataF.jpg"
     },
     {
-        name: "🏗️ Data Structure | Oracle Academy",
+        name: "Data Structure | Oracle Academy",
         image: "https://via.placeholder.com/600x400/f80000/ffffff?text=Data+Structure+Oracle"
     },
     {
-        name: "⚡ Rapid Developer | Mendix",
+        name: "Rapid Developer | Mendix",
         image: "./certificadosIMG/Mendix.jpg"
     },
     {
-        name: "🌐 Networking Basics | Cisco",
+        name: "Networking Basics | Cisco",
         image: "./certificadosIMG/Netw.jpg"
     },
     {
-        name: "💻 Web Development Fundamentals | IBM SkillsBuild",
+        name: "Web Development Fundamentals | IBM SkillsBuild",
         image: "./certificadosIMG/WebD.jpg"
     },
     {
-        name: "☁️ AWS Academy Graduate - AWS Academy Cloud Operations",
+        name: "AWS Academy Graduate - AWS Academy Cloud Operations",
         image: "./certificadosIMG/CloudOperations.jpg"
     }
 ];
